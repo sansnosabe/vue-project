@@ -15,14 +15,14 @@ const createTables = async () => {
     console.log("Creando tabla...");
 
     await connection.query(`
-			CREATE TABLE IF NOT EXISTS users(
-				id INT UNSIGNED PRIMARY KEY	AUTO_INCREMENT,
-				name VARCHAR(30) NOT NULL,
-				age INT UNSIGNED,
-				profession VARCHAR(20) NOT NULL,
-				created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      CREATE TABLE IF NOT EXISTS users(
+        id INT UNSIGNED PRIMARY KEY	AUTO_INCREMENT,
+        name VARCHAR(30) NOT NULL,
+        age INT UNSIGNED,
+        profession VARCHAR(20) NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         modified_at DATETIME ON UPDATE CURRENT_TIMESTAMP
-				);
+      );
 		`);
 
     console.log("¡Tabla creada!");
