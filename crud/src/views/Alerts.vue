@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import appAlert from "../components/alerts.vue";
+import appAlert from "../components/AlertsComp.vue";
 export default {
   name: "alerts",
   components: {

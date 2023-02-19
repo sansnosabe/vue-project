@@ -34,8 +34,7 @@ export default {
   data: () => ({
     routes: [
       { name: "Home", route: "/" },
-      { name: "About", route: "/about" },
-      { name: "Users", route: "/users" },
+      { name: "Users", route: "/users/1" },
       { name: "Alerts", route: "/alerts" },
       { name: "Images", route: "/images" },
       { name: "Clientes", route: "/clientes" },
