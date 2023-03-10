@@ -16,8 +16,13 @@ app.use((req, res, next) => {
 });
 
 const listUsers = require("./controllers/listUsers");
+const createUser = require("./controllers/createUser");
+const editUser = require("./controllers/editUser");
 const deleteUser = require("./controllers/deleteUser");
+
 app.get("/api/users", listUsers);
+app.post("/api/users", createUser);
+app.put("/api/user", editUser);
 app.delete("/api/user/:id", deleteUser);
 
 app.use((err, req, res, next) => {
