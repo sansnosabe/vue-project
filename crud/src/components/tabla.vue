@@ -1,5 +1,6 @@
 <template>
 	<div>
+	<Nuevo :dialog="dialog"/>
 		<h1>{{ titulo }}</h1>
 
 		<v-card>
@@ -48,24 +49,26 @@
 
 <script>
 import { mapActions } from "vuex";
+import Nuevo from "./nuevoCliente.vue"
 export default {
 	props: ["titulo", "cabecera", "items"],
-	data: () => ({
-		show: false,
-	}),
+	components: {
+		Nuevo
+	},
 	data() {
 		return {
 			search: "",
+			dialog: false
 		};
 	},
 	methods: {
-		...mapActions("Clientes", ["eliminarCliente"]),
+		...mapActions("clientes", ["eliminarCliente"]),
 
 		deleteItem(item){
       this.$alertify.confirm(
         `¿Quieres eliminar el usuario ${item.name}?`,
         () => {
-					this.eliminarCliente(item)
+					this.eliminarCliente(item.id)
 					this.$alertify.success('Usuario eliminado')
 				},
         () => this.$alertify.error('Cancelado')
