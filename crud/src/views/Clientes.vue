@@ -1,10 +1,12 @@
 <template>
   <div>
-    <tabla :titulo="titulo" :cabecera="cabecera" :items="items" />
+    <h1 class="text-center">CLIENTES</h1>
+    <tabla :titulo="titulo" :cabecera="cabecera" :items="items.users" />
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import tabla from "@/components/tabla.vue";
 
 export default {
@@ -17,30 +19,21 @@ export default {
   },
   data() {
     return {
-      titulo: "Clientes",
+      titulo: "CLIENTES",
       cabecera: [
         { text: "ID", value: "id" },
         { text: "Nombre", value: "name" },
         { text: "Edad", value: "age" },
         { text: "Profesión", value: "profession" },
+        { text: "Acciones", value: "actions" },
       ],
-      items: [],
     };
   },
   methods: {
-    cargarClientes: async function () {
-      try {
-        const setting = {
-          method: "GET",
-        };
-        const url = "http://localhost:4000/api/users";
-        const data = await fetch(url, setting);
-        const json = await data.json();
-        this.items = json.data.users;
-      } catch (e) {
-        console.error(e);
-      }
-    },
+    ...mapActions("clientes", ["cargarClientes"]),
+  },
+  computed: {
+    ...mapGetters("clientes", ["items"]),
   },
 };
 </script>

@@ -16,7 +16,9 @@ app.use((req, res, next) => {
 });
 
 const listUsers = require("./controllers/listUsers");
+const deleteUser = require("./controllers/deleteUser");
 app.get("/api/users", listUsers);
+app.delete("/api/user/:id", deleteUser);
 
 app.use((err, req, res, next) => {
   console.error(err);

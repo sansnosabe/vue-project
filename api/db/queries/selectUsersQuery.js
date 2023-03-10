@@ -1,7 +1,7 @@
 const getDB = require("../getDB");
 const { generateError } = require("../../helpers");
 
-const selectUserByIdQuery = async () => {
+const selectUsersQuery = async () => {
   let connection;
 
   try {
@@ -19,4 +19,4 @@ const selectUserByIdQuery = async () => {
   }
 };
 
-module.exports = selectUserByIdQuery;
+module.exports = selectUsersQuery;
