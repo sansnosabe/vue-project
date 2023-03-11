@@ -1,6 +1,6 @@
 <template>
 	<div>
-	<Nuevo :dialog="dialog"/>
+	<Nuevo :dialog="dialog" @dialog="dialog = $event" :item="userSelected"/>
 		<h1>{{ titulo }}</h1>
 
 		<v-card>
@@ -15,7 +15,9 @@
 					hide-details
 				></v-text-field>
 				<v-spacer></v-spacer>
-				<v-btn color="primary" dark class="mb-2"> Nuevo usuario </v-btn>
+
+				<v-btn color="primary" dark class="mb-2" @click="newUser()"> Nuevo usuario </v-btn>
+
 			</v-card-title>
 			<v-data-table :headers="cabecera" :items="items" :items-per-page="10" class="elevation-1">
 				<template v-slot:[`item.age`]="{ item }">
@@ -26,7 +28,7 @@
 				<template v-slot:[`item.actions`]="{ item }">
 					<v-tooltip bottom>
 						<template v-slot:activator="{ on, attrs }">
-							<v-icon size="small" class="me-2" @click="editItem(item)" v-bind="attrs" v-on="on">
+							<v-icon size="small" class="me-2" @click="editUser(item)" v-bind="attrs" v-on="on">
 								mdi-pencil
 							</v-icon>
 						</template>
@@ -35,7 +37,7 @@
 
 					<v-tooltip bottom>
 						<template v-slot:activator="{ on, attrs }">
-							<v-icon size="small" class="me-2" @click="deleteItem(item)" v-bind="attrs" v-on="on">
+							<v-icon size="small" class="me-2" @click="deleteUser(item)" v-bind="attrs" v-on="on">
 								mdi-delete
 							</v-icon>
 						</template>
@@ -53,22 +55,35 @@ import Nuevo from "./nuevoCliente.vue"
 export default {
 	props: ["titulo", "cabecera", "items"],
 	components: {
-		Nuevo
+		Nuevo,
 	},
 	data() {
 		return {
 			search: "",
-			dialog: false
+			dialog: false,
+			userSelected: {}
 		};
 	},
 	methods: {
-		...mapActions("clientes", ["eliminarCliente"]),
+		...mapActions("clientes", ["deleteUserAction"]),
+		newUser() {
+			this.userSelected = {
+				name: "",
+				age: null,
+				profession: "",
+			}
+			this.dialog = true;
+		},
+		editUser(item) {
+			this.userSelected = item;
+			this.dialog = true;
+		},
 
-		deleteItem(item){
+		deleteUser(item){
       this.$alertify.confirm(
         `¿Quieres eliminar el usuario ${item.name}?`,
         () => {
-					this.eliminarCliente(item.id)
+					this.deleteUserAction(item.id)
 					this.$alertify.success('Usuario eliminado')
 				},
         () => this.$alertify.error('Cancelado')

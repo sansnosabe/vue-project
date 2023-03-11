@@ -15,7 +15,7 @@ export default {
     tabla,
   },
   created() {
-    this.cargarClientes();
+    this.listUsers();
   },
   data() {
     return {
@@ -30,7 +30,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("clientes", ["cargarClientes"]),
+    ...mapActions("clientes", ["listUsers"]),
   },
   computed: {
     ...mapGetters("clientes", ["items"]),

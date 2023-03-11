@@ -1,6 +1,6 @@
 const getDB = require("../getDB");
 
-const updateUserQuery = async (name, age, profession, idUser) => {
+const updateUserQuery = async (idUser, name, age, profession) => {
 	let connection;
 
 	try {

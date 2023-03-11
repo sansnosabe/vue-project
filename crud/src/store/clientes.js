@@ -22,7 +22,7 @@ export default {
 		},
 	},
 	actions: {
-		cargarClientes: async function ({ commit }) {
+		listUsers: async function ({ commit }) {
 			try {
 				const setting = {
 					method: "GET",
@@ -36,7 +36,41 @@ export default {
 				console.error(err);
 			}
 		},
-		eliminarCliente: async function ({dispatch}, id) {
+		createUserAction: async function ({ commit, dispatch }, datos) {
+			try {
+				const setting = {
+					method: "POST",
+					headers: {
+						"Content-type": "application/json",
+					},
+					body: JSON.stringify(datos),
+				};
+				const url = `http://localhost:4000/api/users`;
+				const response = await fetch(url, setting);
+				const json = await response.json();
+				dispatch("listUsers");
+			} catch (e) {
+				console.error(e);
+			}
+		},
+		editUserAction: async function ({ commit, dispatch }, datos) {
+			try {
+				const setting = {
+					method: "PUT",
+					headers: {
+						"Content-type": "application/json",
+					},
+					body: JSON.stringify(datos),
+				};
+				const url = `http://localhost:4000/api/user`;
+				const response = await fetch(url, setting);
+				const json = await response.json();
+				dispatch("listUsers");
+			} catch (e) {
+				console.error(e);
+			}
+		},
+		deleteUserAction: async function ({ dispatch }, id) {
 			try {
 				const setting = {
 					method: "DELETE",
@@ -44,7 +78,7 @@ export default {
 				const url = `http://localhost:4000/api/user/${id}`;
 				const response = await fetch(url, setting);
 				const json = await response.json();
-				dispatch("cargarClientes");
+				dispatch("listUsers");
 			} catch (e) {
 				console.error(e);
 			}
