@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-center">CLIENTES</h1>
+    <h1 class="text-center mt-5">CRUD CLIENTES</h1>
     <tabla :titulo="titulo" :cabecera="cabecera" :items="items.users" />
   </div>
 </template>
