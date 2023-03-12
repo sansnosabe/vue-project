@@ -1,14 +1,20 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Clientes from "../views/Clientes.vue";
+import clientes from "../views/clientes.vue";
+import cardsClientes from "../views/cardsClientes.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    name: "Home",
+    component: cardsClientes,
+  },
+  {
+    path: "/clientes",
     name: "clientes",
-    component: Clientes,
+    component: clientes,
   },
 ];
 

@@ -17,6 +17,10 @@ const updateUserQuery = async (idUser, name, age, profession) => {
 		if (profession) {
 			await connection.query(`UPDATE users SET profession = ? WHERE id = ?`, [profession, idUser]);
 		}
+
+		// if (avatar) {
+		// 	await connection.query(`UPDATE users SET avatar = ? WHERE id = ?`, [avatar, idUser]);
+		// }
 	} finally {
 		if (connection) connection.release();
 	}

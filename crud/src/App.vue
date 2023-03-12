@@ -4,10 +4,10 @@
 			<div class="d-flex align-center">
 				<h1 class="mt-2">CRUD</h1>
 			</div>
-
-			<!-- <v-btn v-for="(item, index) in routes" :key="index" @click="insertRoute(item.route)" text>
-        <span class="mr-2">{{ item.name }}</span>
-      </v-btn> -->
+			<v-spacer></v-spacer>
+			<v-btn v-for="(item, index) in routes" :key="index" @click="insertRoute(item.route)" text class="text-light">
+				<span class="mr-2">{{ item.name }}</span>
+			</v-btn>
 		</v-app-bar>
 
 		<v-main>
@@ -18,17 +18,19 @@
 
 <script>
 export default {
-	name: "App",
+  name: "App",
 
-	data: () => ({
-		routes: [{ name: "Home", route: "/" }],
-		isDarkMode: false,
-	}),
+  data: () => ({
+    routes: [
+      { name: "Home", route: "/" },
+      { name: "Clientes", route: "/clientes" },
+    ],
+  }),
 
-	methods: {
-		insertRoute(route) {
-			this.$router.push(route);
-		},
-	},
+  methods: {
+    insertRoute(route) {
+      this.$router.push(route);
+    },
+  },
 };
 </script>

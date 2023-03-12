@@ -20,6 +20,7 @@ const createTables = async () => {
         name VARCHAR(30) NOT NULL,
         age INT UNSIGNED,
         profession VARCHAR(20) NOT NULL,
+        avatar VARCHAR(100) DEFAULT 'default.jpg',
         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
         modified_at DATETIME ON UPDATE CURRENT_TIMESTAMP
       );

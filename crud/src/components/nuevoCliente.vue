@@ -38,6 +38,16 @@
 										>La profesión es obligatoria</small
 									>
 								</v-col>
+								<!-- <v-col cols="12">
+									<v-file-input
+									:rules="rules"
+									v-model="item.avatar"
+									accept="image/png, image/jpeg, image/bmp"
+									prepend-icon="mdi-camera"
+									label="Avatar"
+								></v-file-input>
+								</v-col> -->
+
 							</v-row>
 						</v-container>
 						<small>*Indica los campos obligatorios</small>
@@ -63,6 +73,9 @@ export default {
 			nombreObligatorio: false,
 			edadObligatorio: false,
 			profesionObligatorio: false,
+			rules: [
+        value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
+      ],
 		};
 	},
 	methods: {

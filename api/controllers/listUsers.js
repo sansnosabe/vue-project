@@ -8,7 +8,7 @@ const listUsers = async (req, res, next) => {
       code: 200,
       status: "ok",
       data: {
-        users,
+        users
       },
     });
   } catch (err) {

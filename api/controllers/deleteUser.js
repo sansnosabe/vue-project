@@ -1,5 +1,6 @@
 const deleteUsersQuery = require("../db/queries/deleteUsersQuery");
 const selectUserByIdQuery = require("../db/queries/selectUserByIdQuery");
+const { deleteImg } = require("../helpers");
 
 const deleteUser = async (req, res, next) => {
   try {
@@ -12,6 +13,10 @@ const deleteUser = async (req, res, next) => {
         status: "error",
         message: "Usuario no encontrado",
       });
+    }
+
+    if (user.avatar) {
+      await deleteImg(user.avatar);
     }
 
     await deleteUsersQuery(idUser);
