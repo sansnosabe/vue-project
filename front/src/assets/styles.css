@@ -1,0 +1,11 @@
+a {
+  color: #21c7bf !important;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #0bceaf;
+  text-decoration: none;
+}
