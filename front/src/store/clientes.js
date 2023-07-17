@@ -85,7 +85,7 @@ export default {
         const setting = {
           method: "DELETE",
         };
-        const url = `${apiUrl}/api/user${id}`;
+        const url = `${apiUrl}/api/user/${id}`;
         const response = await fetch(url, setting);
         const json = await response.json();
         dispatch("listUsers");
