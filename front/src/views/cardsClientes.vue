@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      titulo: "CLIENTES",
+      titulo: "TARJETAS CLIENTES",
     };
   },
   methods: {
