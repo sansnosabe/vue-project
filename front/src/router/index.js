@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import clientes from "../views/clientes.vue";
+import tablaClientes from "../views/tablaClientes.vue";
 import cardsClientes from "../views/cardsClientes.vue";
 
 Vue.use(VueRouter);
@@ -8,13 +8,13 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "tarjetas",
     component: cardsClientes,
   },
   {
-    path: "/clientes",
-    name: "clientes",
-    component: clientes,
+    path: "/tabla",
+    name: "tabla",
+    component: tablaClientes,
   },
 ];
 

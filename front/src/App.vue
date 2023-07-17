@@ -6,7 +6,7 @@
       </div>
       <v-spacer></v-spacer>
       <v-btn v-for="(item, index) in routes" :key="index" @click="insertRoute(item.route)" text class="text-light">
-        <span class="mr-2">{{ item.name }}</span>
+        <span class="m-2">{{ item.name }}</span>
       </v-btn>
     </v-app-bar>
 
@@ -28,8 +28,8 @@ export default {
 
   data: () => ({
     routes: [
-      { name: "Home", route: "/" },
-      { name: "Clientes", route: "/clientes" },
+      { name: "Tarjetas", route: "/" },
+      { name: "Tabla", route: "/tabla" },
     ],
   }),
 
