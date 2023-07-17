@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 d-flex flex-column align-center justify-content-center mt-10">
     <Nuevo :dialog="dialog" @dialog="dialog = $event" :item="userSelected" />
-    <h1 class="">TARJETAS {{ titulo }}</h1>
+    <h1 class="">{{ titulo }}</h1>
 
     <v-card-title class="w-50 d-flex justify-content-end mb-2">
       <v-spacer></v-spacer>
@@ -49,7 +49,7 @@
 
 <script>
 import { mapActions } from "vuex";
-import Nuevo from "./nuevoCliente.vue";
+import Nuevo from "./nuevo.vue";
 
 export default {
   props: ["titulo", "items"],
@@ -73,6 +73,7 @@ export default {
       };
       this.dialog = true;
     },
+
     editUser(item) {
       this.userSelected = item;
       this.dialog = true;
@@ -88,6 +89,7 @@ export default {
         () => this.$alertify.error("Cancelado")
       );
     },
+
     getColor(age) {
       if (age > 40) return "red";
       else if (age > 29) return "orange";
