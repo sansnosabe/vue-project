@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      titulo: "CLIENTES",
+      titulo: "TABLA CLIENTES",
       cabecera: [
         { text: "ID", value: "id" },
         { text: "Nombre", value: "name" },
